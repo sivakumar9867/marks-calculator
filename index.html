@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Marks Result Calculator</title>
+    <style>
+        body { font-family: Arial; background: #f2f2f2; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .container { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px #ccc; }
+        input { width: 100%; padding: 8px; margin: 5px 0; }
+        button { padding: 10px; width: 100%; background: green; color: white; border: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Marks Result Calculator</h2>
+        <form method="POST">
+            <label>Name:</label>
+            <input type="text" name="name" required>
+            
+            <label>Python Marks:</label>
+            <input type="number" name="python" min="0" max="100" required>
+            
+            <label>C Marks:</label>
+            <input type="number" name="c" min="0" max="100" required>
+            
+            <label>DSA Marks:</label>
+            <input type="number" name="dsa" min="0" max="100" required>
+            
+            <button type="submit">Check Result</button>
+        </form>
+
+        {% if result is not none %}
+            <h3>Result for {{ name }}</h3>
+            <p>Python: {{ python_marks }}</p>
+            <p>C: {{ c_marks }}</p>
+            <p>DSA: {{ dsa_marks }}</p>
+            <h3>Status: {{ result }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
