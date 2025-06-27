@@ -19,11 +19,11 @@ def index():
                 result = "Fail"
             else:
                 result = "Pass"
-        except:
+        except ValueError:
             result = "Invalid input. Please enter valid numbers."
 
     return render_template('index.html', result=result, name=name,
                            python_marks=python_marks, c_marks=c_marks, dsa_marks=dsa_marks)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
