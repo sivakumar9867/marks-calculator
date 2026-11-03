@@ -45,8 +45,6 @@ When even one subject is below the minimum pass mark, the report highlights that
 
 ## Result Calculation
 
-The application uses the following rules:
-
 | Parameter | Rule |
 |---|---|
 | Subjects | Python, C Programming, DSA |
@@ -65,12 +63,137 @@ A high overall average does not compensate for a subject below the minimum thres
 
 ```mermaid
 flowchart TD
-    A[Open MARKS / LAB] --> B[Enter Student Name]
-    B --> C[Enter Subject Marks]
-    C --> D[Validate Inputs]
-    D -->|Invalid| E[Show Validation Error]
+    A["Open MARKS / LAB"] --> B["Enter Student Name"]
+    B --> C["Enter Subject Marks"]
+    C --> D["Validate Inputs"]
+    D -- "Invalid" --> E["Show Validation Error"]
     E --> C
-    D -->|Valid| F[Calculate Total and Average]
-    F --> G{All Subjects >= 35?}
-    G -->|Yes| H[Generate PASS Report]
-    G -->|No| I[Generate
+    D -- "Valid" --> F["Calculate Total and Average"]
+    F --> G{"Does every subject have at least 35 marks?"}
+    G -- "Yes" --> H["Generate PASS Report"]
+    G -- "No" --> I["Generate NEEDS ATTENTION Report"]
+    H --> J["View or Print Report"]
+    I --> J
+```
+
+## Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| Python | Backend programming and calculations |
+| Flask | Web application framework |
+| HTML5 | Application structure |
+| CSS3 | Styling and responsive interface |
+| JavaScript | Live calculations and client-side validation |
+
+## Getting Started
+
+### Prerequisites
+
+- Python 3.10 or newer
+- pip package manager
+- A modern web browser
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/sivakumar9867/marks-calculator.git
+```
+
+### 2. Navigate to the Project Folder
+
+```bash
+cd marks-calculator
+```
+
+### 3. Create a Virtual Environment
+
+**Windows:**
+
+```powershell
+py -m venv .venv
+.venv\Scripts\activate
+```
+
+**macOS / Linux:**
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+### 4. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 5. Run the Application
+
+```bash
+python app.py
+```
+
+### 6. Open in Browser
+
+Visit:
+
+```text
+http://127.0.0.1:5000
+```
+
+## Project Structure
+
+```text
+marks-calculator/
+│
+├── app.py
+├── requirements.txt
+├── index.html                 # Earlier standalone version
+│
+├── templates/
+│   └── index.html             # Flask application template
+│
+├── static/
+│   ├── app.js
+│   └── style.css
+│
+├── assets/
+│   └── screenshots/
+│       ├── marks-lab-home.jpg
+│       ├── marks-lab-pass-report.jpg
+│       └── marks-lab-attention-report.jpg
+│
+├── .gitignore
+└── README.md
+```
+
+## Learning Outcomes
+
+Through this project, I explored and practised:
+
+- Building a web application using Python and Flask.
+- Handling HTML form submissions.
+- Implementing input validation and error handling.
+- Performing calculations and conditional result processing.
+- Using JavaScript to update values dynamically.
+- Designing responsive user interfaces using CSS.
+- Generating structured result reports with print support.
+
+## Future Improvements
+
+- Support for custom subjects and configurable pass marks.
+- PDF report export.
+- Optional student result storage.
+- Multiple student records and academic sessions.
+- Additional grading and performance analysis.
+
+## About the Project
+
+MARKS / LAB — Result Studio is an educational project built to simplify basic student marks calculation and result reporting.
+
+Generated reports are based only on the values entered by the user. They are not official academic marksheets.
+
+---
+
+**Built with Python and Flask.**
